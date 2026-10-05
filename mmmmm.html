@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GlowBeauty - Makeup Store</title>
+
+<style>
+
+/* =========================
+   GENERAL
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 50px 0;
+}
+
+.title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 35px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: #282a35;
+    color: white;
+    padding: 15px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #ff69b4;
+}
+
+nav a {
+    color: white;
+    margin-left: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+nav a:hover {
+    color: #ff69b4;
+}
+
+
+/* =========================
+   PAGE SYSTEM
+========================= */
+
+.page {
+    display: none;
+    min-height: 75vh;
+}
+
+.page.active {
+    display: block;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    background: linear-gradient(135deg, #282a35, #ff69b4);
+    color: white;
+    text-align: center;
+    padding: 110px 20px;
+}
+
+.hero h1 {
+    font-size: 52px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 21px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    background: #ff69b4;
+    color: white;
+    border: none;
+    padding: 13px 24px;
+    border-radius: 5px;
+    font-size: 16px;
+    display: inline-block;
+}
+
+.btn:hover {
+    background: #e64b98;
+}
+
+.dark-btn {
+    background: #282a35;
+}
+
+.dark-btn:hover {
+    background: #111;
+}
+
+
+/* =========================
+   CATEGORY CARDS
+========================= */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+}
+
+.card-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   PRODUCT GRID
+========================= */
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+}
+
+.product-image {
+    height: 210px;
+    background: #f8dce9;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 85px;
+    margin-bottom: 20px;
+}
+
+.product h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.product p {
+    color: #666;
+    line-height: 1.5;
+}
+
+.price {
+    color: #e83e8c;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.product-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+
+/* =========================
+   PRODUCT DETAIL
+========================= */
+
+.detail-box {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+}
+
+.detail-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.big-product-image {
+    height: 350px;
+    background: #f8dce9;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 130px;
+}
+
+.detail-box h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.detail-box p {
+    color: #555;
+    line-height: 1.7;
+}
+
+.specifications {
+    margin-top: 35px;
+}
+
+.specifications h2 {
+    margin-bottom: 15px;
+}
+
+.specifications ul {
+    padding-left: 25px;
+    line-height: 2;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+}
+
+th {
+    background: #282a35;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #fafafa;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-box {
+    background: white;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    line-height: 1.8;
+}
+
+.about-box h2 {
+    margin-bottom: 12px;
+}
+
+.about-box p {
+    color: #555;
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.contact-box,
+.form-box {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+}
+
+.contact-box p {
+    margin: 18px 0;
+    line-height: 1.6;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 13px;
+    margin: 8px 0 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+textarea {
+    height: 130px;
+}
+
+
+/* =========================
+   ORDER PAGE
+========================= */
+
+.order-box {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+}
+
+.order-box h2 {
+    margin-bottom: 20px;
+}
+
+.order-summary {
+    background: #f8dce9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.order-summary h3 {
+    margin-bottom: 10px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #282a35;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+footer span {
+    color: #ff69b4;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 850px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        text-align: center;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 5px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .cards,
+    .products,
+    .contact-grid,
+    .detail-top {
+        grid-template-columns: 1fr;
+    }
+
+    .big-product-image {
+        height: 250px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="logo">
+        Glow<span>Beauty</span>
+    </div>
+
+    <nav>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('products')">Products</a>
+        <a onclick="showPage('categories')">Categories</a>
+        <a onclick="showPage('about')">About</a>
+        <a onclick="showPage('contact')">Contact</a>
+    </nav>
+
+</header>
+
+
+
+<!-- =========================
+     HOME PAGE
+========================= -->
+
+<section id="home" class="page active">
+
+    <div class="hero">
+
+        <h1>Glow With Confidence</h1>
+
+        <p>
+            Discover beautiful makeup products for your everyday look.
+        </p>
+
+        <button class="btn"
+                onclick="showPage('products')">
+            Shop Makeup
+        </button>
+
+    </div>
+
+
+    <div class="container">
+
+        <h2 class="title">
+            Shop By Category
+        </h2>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-icon">
+                    💄
+                </div>
+
+                <h3>Lip Makeup</h3>
+
+                <p>
+                    Find beautiful lipsticks, lip gloss and lip liners
+                    for every occasion.
+                </p>
+
+                <button class="btn"
+                        onclick="showPage('products')">
+                    Shop Now
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    💋
+                </div>
+
+                <h3>Face Makeup</h3>
+
+                <p>
+                    Explore foundation, concealer, blush and
+                    other face makeup essentials.
+                </p>
+
+                <button class="btn"
+                        onclick="showPage('products')">
+                    Shop Now
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    👁️
+                </div>
+
+                <h3>Eye Makeup</h3>
+
+                <p>
+                    Create stunning eye looks with eyeshadow,
+                    eyeliner and mascara.
+                </p>
+
+                <button class="btn"
+                        onclick="showPage('products')">
+                    Shop Now
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <br><br>
+
+
+        <h2 class="title">
+            Why Choose GlowBeauty?
+        </h2>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-icon">✨</div>
+
+                <h3>Quality Products</h3>
+
+                <p>
+                    Carefully selected makeup products for
+                    your beauty routine.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">💰</div>
+
+                <h3>Affordable Prices</h3>
+
+                <p>
+                    Beautiful makeup at prices suitable
+                    for every budget.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">🚚</div>
+
+                <h3>Easy Shopping</h3>
+
+                <p>
+                    Simple product browsing and an easy
+                    order process.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     PRODUCTS PAGE
+========================= -->
+
+<section id="products" class="page">
+
+<div class="container">
+
+<h1 class="title">
+    Makeup Products
+</h1>
+
+
+<div class="products">
+
+
+<!-- PRODUCT 1 -->
+
+<div class="product">
+
+    <div class="product-image">
+        💄
+    </div>
+
+    <h3>Rose Matte Lipstick</h3>
+
+    <p>
+        Long-lasting matte lipstick with a beautiful
+        rose shade.
+    </p>
+
+    <div class="price">
+        PKR 1,499
+    </div>
+
+    <div class="product-buttons">
+
+        <button class="btn"
+                onclick="showPage('lipstick')">
+            View Details
+        </button>
+
+        <button class="btn dark-btn"
+                onclick="buyProduct('Rose Matte Lipstick', 'PKR 1,499')">
+            Buy Now
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- PRODUCT 2 -->
+
+<div class="product">
+
+    <div class="product-image">
+        💋
+    </div>
+
+    <h3>Velvet Lip Gloss</h3>
+
+    <p>
+        Smooth and shiny lip gloss for a soft
+        and glamorous look.
+    </p>
+
+    <div class="price">
+        PKR 999
+    </div>
+
+    <div class="product-buttons">
+
+        <button class="btn"
+                onclick="showPage('lipgloss')">
+            View Details
+        </button>
+
+        <button class="btn dark-btn"
+                onclick="buyProduct('Velvet Lip Gloss', 'PKR 999')">
+            Buy Now
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- PRODUCT 3 -->
+
+<div class="product">
+
+    <div class="product-image">
+        🧴
+    </div>
+
+    <h3>Perfect Cover Foundation</h3>
+
+    <p>
+        Lightweight foundation providing smooth
+        and natural-looking coverage.
+    </p>
+
+    <div class="price">
+        PKR 2,499
+    </div>
+
+    <div class="product-buttons">
+
+        <button class="btn"
+                onclick="showPage('foundation')">
+            View Details
+        </button>
+
+        <button class="btn dark-btn"
+                onclick="buyProduct('Perfect Cover Foundation', 'PKR 2,499')">
+            Buy Now
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- PRODUCT 4 -->
+
+<div class="product">
+
+    <div class="product-image">
+        🌸
+    </div>
+
+    <h3>Natural Glow Blush</h3>
+
+    <p>
+        Soft blush that gives your cheeks a natural
+        and fresh glow.
+    </p>
+
+    <div class="price">
+        PKR 1,299
+    </div>
+
+    <div class="product-buttons">
+
+        <button class="btn"
+                onclick="showPage('blush')">
+            View Details
+        </button>
+
+        <button class="btn dark-btn"
+                onclick="buyProduct('Natural Glow Blush', 'PKR 1,299')">
+            Buy Now
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- PRODUCT 5 -->
+
+<div class="product">
+
+    <div class="product-image">
+        👁️
+    </div>
+
+    <h3>Classic Eye Liner</h3>
+
+    <p>
+        Easy-to-use eyeliner for precise and
+        beautiful eye definition.
+    </p>
+
+    <div class="price">
+        PKR 799
+    </div>
+
+    <div class="product-buttons">
+
+        <button class="btn"
+                onclick="showPage('eyeliner')">
+            View Details
+        </button>
+
+        <button class="btn dark-btn"
+                onclick="buyProduct('Classic Eye Liner', 'PKR 799')">
+            Buy Now
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- PRODUCT 6 -->
+
+<div class="product">
+
+    <div class="product-image">
+        👀
+    </div>
+
+    <h3>Volume Boost Mascara</h3>
+
+    <p>
+        Adds volume and definition to your lashes
+        for a dramatic look.
+    </p>
+
+    <div class="price">
+        PKR 1,199
+    </div>
+
+    <div class="product-buttons">
+
+        <button class="btn"
+                onclick="showPage('mascara')">
+            View Details
+        </button>
+
+        <button class="btn dark-btn"
+                onclick="buyProduct('Volume Boost Mascara', 'PKR 1,199')">
+            Buy Now
+        </button>
+
+    </div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     LIPSTICK DETAIL
+========================= -->
+
+<section id="lipstick" class="page">
+
+<div class="container">
+
+<div class="detail-box">
+
+<div class="detail-top">
+
+    <div class="big-product-image">
+        💄
+    </div>
+
+    <div>
+
+        <h1>Rose Matte Lipstick</h1>
+
+        <div class="price">
+            PKR 1,499
+        </div>
+
+        <p>
+            Rose Matte Lipstick gives your lips a beautiful
+            and elegant matte finish. It is suitable for
+            everyday makeup and special occasions.
+        </p>
+
+        <br>
+
+        <button class="btn"
+                onclick="buyProduct('Rose Matte Lipstick', 'PKR 1,499')">
+            Buy Now
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="specifications">
+
+<h2>Product Details</h2>
+
+<ul>
+    <li>Matte finish</li>
+    <li>Long-lasting formula</li>
+    <li>Beautiful rose shade</li>
+    <li>Easy application</li>
+    <li>Suitable for everyday use</li>
+</ul>
+
+</div>
+
+
+<br>
+
+<button class="btn dark-btn"
+        onclick="showPage('products')">
+    ← Back to Products
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     LIP GLOSS DETAIL
+========================= -->
+
+<section id="lipgloss" class="page">
+
+<div class="container">
+
+<div class="detail-box">
+
+<div class="detail-top">
+
+    <div class="big-product-image">
+        💋
+    </div>
+
+    <div>
+
+        <h1>Velvet Lip Gloss</h1>
+
+        <div class="price">
+            PKR 999
+        </div>
+
+        <p>
+            Velvet Lip Gloss gives your lips a smooth,
+            shiny and comfortable finish. Perfect for
+            natural and glamorous makeup looks.
+        </p>
+
+        <br>
+
+        <button class="btn"
+                onclick="buyProduct('Velvet Lip Gloss', 'PKR 999')">
+            Buy Now
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="specifications">
+
+<h2>Product Details</h2>
+
+<ul>
+    <li>High-shine finish</li>
+    <li>Soft texture</li>
+    <li>Comfortable on lips</li>
+    <li>Easy application</li>
+    <li>Suitable for daily makeup</li>
+</ul>
+
+</div>
+
+<br>
+
+<button class="btn dark-btn"
+        onclick="showPage('products')">
+    ← Back to Products
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     FOUNDATION DETAIL
+========================= -->
+
+<section id="foundation" class="page">
+
+<div class="container">
+
+<div class="detail-box">
+
+<div class="detail-top">
+
+    <div class="big-product-image">
+        🧴
+    </div>
+
+    <div>
+
+        <h1>Perfect Cover Foundation</h1>
+
+        <div class="price">
+            PKR 2,499
+        </div>
+
+        <p>
+            Perfect Cover Foundation provides smooth,
+            natural-looking coverage and helps create
+            an even-looking complexion.
+        </p>
+
+        <br>
+
+        <button class="btn"
+                onclick="buyProduct('Perfect Cover Foundation', 'PKR 2,499')">
+            Buy Now
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="specifications">
+
+<h2>Product Details</h2>
+
+<ul>
+    <li>Lightweight texture</li>
+    <li>Natural-looking finish</li>
+    <li>Buildable coverage</li>
+    <li>Easy to blend</li>
+    <li>Suitable for everyday makeup</li>
+</ul>
+
+</div>
+
+<br>
+
+<button class="btn dark-btn"
+        onclick="showPage('products')">
+    ← Back to Products
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     BLUSH DETAIL
+========================= -->
+
+<section id="blush" class="page">
+
+<div class="container">
+
+<div class="detail-box">
+
+<div class="detail-top">
+
+    <div class="big-product-image">
+        🌸
+    </div>
+
+    <div>
+
+        <h1>Natural Glow Blush</h1>
+
+        <div class="price">
+            PKR 1,299
+        </div>
+
+        <p>
+            Natural Glow Blush gives cheeks a fresh,
+            soft and healthy-looking glow.
+        </p>
+
+        <br>
+
+        <button class="btn"
+                onclick="buyProduct('Natural Glow Blush', 'PKR 1,299')">
+            Buy Now
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="specifications">
+
+<h2>Product Details</h2>
+
+<ul>
+    <li>Soft natural shade</li>
+    <li>Easy to blend</li>
+    <li>Buildable color</li>
+    <li>Lightweight texture</li>
+    <li>Perfect for everyday use</li>
+</ul>
+
+</div>
+
+<br>
+
+<button class="btn dark-btn"
+        onclick="showPage('products')">
+    ← Back to Products
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     EYELINER DETAIL
+========================= -->
+
+<section id="eyeliner" class="page">
+
+<div class="container">
+
+<div class="detail-box">
+
+<div class="detail-top">
+
+    <div class="big-product-image">
+        👁️
+    </div>
+
+    <div>
+
+        <h1>Classic Eye Liner</h1>
+
+        <div class="price">
+            PKR 799
+        </div>
+
+        <p>
+            Classic Eye Liner helps you create clean,
+            defined and beautiful eye looks with ease.
+        </p>
+
+        <br>
+
+        <button class="btn"
+                onclick="buyProduct('Classic Eye Liner', 'PKR 799')">
+            Buy Now
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="specifications">
+
+<h2>Product Details</h2>
+
+<ul>
+    <li>Precise applicator</li>
+    <li>Deep color</li>
+    <li>Easy application</li>
+    <li>Suitable for different eye looks</li>
+    <li>Compact design</li>
+</ul>
+
+</div>
+
+<br>
+
+<button class="btn dark-btn"
+        onclick="showPage('products')">
+    ← Back to Products
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     MASCARA DETAIL
+========================= -->
+
+<section id="mascara" class="page">
+
+<div class="container">
+
+<div class="detail-box">
+
+<div class="detail-top">
+
+    <div class="big-product-image">
+        👀
+    </div>
+
+    <div>
+
+        <h1>Volume Boost Mascara</h1>
+
+        <div class="price">
+            PKR 1,199
+        </div>
+
+        <p>
+            Volume Boost Mascara gives lashes a fuller,
+            longer and more defined appearance.
+        </p>
+
+        <br>
+
+        <button class="btn"
+                onclick="buyProduct('Volume Boost Mascara', 'PKR 1,199')">
+            Buy Now
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="specifications">
+
+<h2>Product Details</h2>
+
+<ul>
+    <li>Volume-boosting formula</li>
+    <li>Defines lashes</li>
+    <li>Easy-to-use brush</li>
+    <li>Suitable for daily makeup</li>
+    <li>Creates a dramatic eye look</li>
+</ul>
+
+</div>
+
+<br>
+
+<button class="btn dark-btn"
+        onclick="showPage('products')">
+    ← Back to Products
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     CATEGORIES PAGE
+========================= -->
+
+<section id="categories" class="page">
+
+<div class="container">
+
+<h1 class="title">
+    Makeup Categories
+</h1>
+
+
+<div class="cards">
+
+<div class="card">
+
+<div class="card-icon">💄</div>
+
+<h3>Lips</h3>
+
+<p>
+Lipsticks, lip gloss and lip products
+for beautiful lips.
+</p>
+
+<button class="btn"
+onclick="showPage('products')">
+View Products
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">🧴</div>
+
+<h3>Face</h3>
+
+<p>
+Foundation, blush and other face
+makeup essentials.
+</p>
+
+<button class="btn"
+onclick="showPage('products')">
+View Products
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">👁️</div>
+
+<h3>Eyes</h3>
+
+<p>
+Eyeliner, mascara and eye makeup
+products.
+</p>
+
+<button class="btn"
+onclick="showPage('products')">
+View Products
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT PAGE
+========================= -->
+
+<section id="about" class="page">
+
+<div class="container">
+
+<h1 class="title">
+    About GlowBeauty
+</h1>
+
+
+<div class="about-box">
+
+<h2>Our Story</h2>
+
+<p>
+GlowBeauty is an online makeup store created to make
+beauty shopping simple, easy and enjoyable.
+</p>
+
+
+<h2>Our Mission</h2>
+
+<p>
+Our mission is to provide customers with a variety of
+makeup products at affordable prices while making the
+shopping experience simple.
+</p>
+
+
+<h2>What We Offer</h2>
+
+<p>
+We offer lip makeup, face makeup and eye makeup products
+for everyday beauty routines and special occasions.
+</p>
+
+
+<h2>Why Shop With Us?</h2>
+
+<p>
+Our website provides product details, prices and an easy
+way to browse products before placing an order.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT PAGE
+========================= -->
+
+<section id="contact" class="page">
+
+<div class="container">
+
+<h1 class="title">
+    Contact GlowBeauty
+</h1>
+
+
+<div class="contact-grid">
+
+
+<div class="contact-box">
+
+<h2>Store Information</h2>
+
+<p>
+📍 <b>Address:</b><br>
+Main Bazaar, Chiniot, Punjab, Pakistan
+</p>
+
+<p>
+📞 <b>Phone:</b><br>
++92 300 1234567
+</p>
+
+<p>
+📧 <b>Email:</b><br>
+info@glowbeauty.example
+</p>
+
+<p>
+🕐 <b>Opening Hours:</b><br>
+Monday - Saturday<br>
+10:00 AM - 8:00 PM
+</p>
+
+</div>
+
+
+
+<div class="form-box">
+
+<h2>Send Us a Message</h2>
+
+<form onsubmit="sendMessage(event)">
+
+<label>
+Your Name
+</label>
+
+<input
+type="text"
+placeholder="Enter your name"
+required
+>
+
+
+<label>
+Email
+</label>
+
+<input
+type="email"
+placeholder="Enter your email"
+required
+>
+
+
+<label>
+Message
+</label>
+
+<textarea
+placeholder="Write your message..."
+required></textarea>
+
+
+<button
+class="btn"
+type="submit">
+Send Message
+</button>
+
+</form>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     ORDER PAGE
+========================= -->
+
+<section id="order" class="page">
+
+<div class="container">
+
+<h1 class="title">
+    Place Your Order
+</h1>
+
+
+<div class="order-box">
+
+<div class="order-summary">
+
+<h3>Selected Product</h3>
+
+<p id="selectedProduct">
+Product
+</p>
+
+<p id="selectedPrice">
+Price
+</p>
+
+</div>
+
+
+<form onsubmit="placeOrder(event)">
+
+<label>
+Full Name
+</label>
+
+<input
+type="text"
+placeholder="Enter your full name"
+required
+>
+
+
+<label>
+Phone Number
+</label>
+
+<input
+type="tel"
+placeholder="Enter phone number"
+required
+>
+
+
+<label>
+Email Address
+</label>
+
+<input
+type="email"
+placeholder="Enter email address"
+required
+>
+
+
+<label>
+Delivery Address
+</label>
+
+<textarea
+placeholder="Enter your complete delivery address"
+required></textarea>
+
+
+<label>
+Payment Method
+</label>
+
+<select required>
+
+<option value="">
+Select Payment Method
+</option>
+
+<option>
+Cash on Delivery
+</option>
+
+<option>
+Bank Transfer
+</option>
+
+</select>
+
+
+<button
+class="btn"
+type="submit">
+Place Order
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<p>
+© 2026 <span>GlowBeauty</span>.
+All Rights Reserved.
+</p>
+
+</footer>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+function showPage(pageId) {
+
+    const pages = document.querySelectorAll(".page");
+
+    pages.forEach(function(page) {
+        page.classList.remove("active");
+    });
+
+    const selectedPage = document.getElementById(pageId);
+
+    if (selectedPage) {
+        selectedPage.classList.add("active");
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================
+   BUY PRODUCT
+========================= */
+
+function buyProduct(productName, productPrice) {
+
+    document.getElementById("selectedProduct").innerHTML =
+        "<b>Product:</b> " + productName;
+
+    document.getElementById("selectedPrice").innerHTML =
+        "<b>Price:</b> " + productPrice;
+
+    showPage("order");
+}
+
+
+/* =========================
+   ORDER FORM
+========================= */
+
+function placeOrder(event) {
+
+    event.preventDefault();
+
+    alert(
+        "Thank you for your order! Your order has been received."
+    );
+
+    event.target.reset();
+
+    showPage("home");
+}
+
+
+/* =========================
+   CONTACT FORM
+========================= */
+
+function sendMessage(event) {
+
+    event.preventDefault();
+
+    alert(
+        "Thank you! Your message has been submitted successfully."
+    );
+
+    event.target.reset();
+}
+
+</script>
+
+</body>
+</html>
